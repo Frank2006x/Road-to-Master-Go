@@ -30,8 +30,12 @@ func RandomOwner() string {
 }
 
 
-func RandomMoney() int64 {
+func RandomBalance() int64 {
 	return RandomInt(0, 1000)
+}
+
+func RandomMoney() int64 {
+	return RandomInt(-1000, 1000)
 }
 
 func RandomCurrency() string {
