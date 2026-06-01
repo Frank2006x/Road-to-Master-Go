@@ -74,15 +74,28 @@ func (s *store) TransferTx(ctx context.Context, arg CreateTransferParams) (Trans
 		if err != nil {
 			return err
 		}
-		result.FromAccount, err = q.GetAccount(ctx, arg.FromAccountID)
+		
+
+		result.FromAccount, err = q.AddAccountBalance(ctx, AddAccountBalanceParams{
+			ID:     arg.FromAccountID,
+			Balance: -arg.Amount,
+		})
+
 		if err != nil {
 			return err
 		}
-		result.ToAccount, err = q.GetAccount(ctx, arg.ToAccountID)
+
+		
+		result.ToAccount, err = q.AddAccountBalance(ctx, AddAccountBalanceParams{
+			ID:     arg.ToAccountID,
+			Balance:  arg.Amount,
+		})
 		if err != nil {
 			return err
 		}
-		//TODO update accounts' balance
+		
+
+		
 		return nil
 	})
 	return result, err

@@ -38,7 +38,7 @@ func TestGetTransferByFromAccountID(t *testing.T) {
 		arg := CreateTransferParams{
 			FromAccountID: account1.ID,
 			ToAccountID: account2.ID,
-			Amount: util.RandomMoney(),
+			Amount: 10,
 		}
 		_, err := testQueries.CreateTransfer(context.Background(), arg)
 		require.NoError(t, err)
@@ -65,7 +65,7 @@ func TestGetTransferByToAccountID(t *testing.T) {
 		arg := CreateTransferParams{
 			FromAccountID: account1.ID,
 			ToAccountID: account2.ID,
-			Amount: util.RandomMoney(),
+			Amount: 10,
 		}
 		_, err := testQueries.CreateTransfer(context.Background(), arg)
 		require.NoError(t, err)
@@ -92,7 +92,7 @@ func TestListTransfer(t *testing.T) {
 		arg := CreateTransferParams{
 			FromAccountID: account1.ID,
 			ToAccountID: account2.ID,
-			Amount: util.RandomMoney(),
+			Amount: 10,
 		}
 		_, err := testQueries.CreateTransfer(context.Background(), arg)
 		require.NoError(t, err)

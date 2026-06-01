@@ -11,6 +11,7 @@ import (
 
 var testQueries *Queries
 var testDB *pgxpool.Pool
+var testStore *store
 
 func TestMain(m *testing.M) {
 	var err error
@@ -24,6 +25,7 @@ func TestMain(m *testing.M) {
 	}
 
 	testQueries = New(testDB)
+	testStore = NewStore(testDB)
 
 	code := m.Run()
 
