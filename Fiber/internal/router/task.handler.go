@@ -3,7 +3,7 @@ package router
 import (
 	"fiber/internal/handler"
 
-	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v3"
 )
 
 func SetupTasksRouter(app *fiber.App) {
@@ -11,6 +11,7 @@ func SetupTasksRouter(app *fiber.App) {
 
 	taskGroup := app.Group("/tasks")
 	taskGroup.Get("/", handler.GetTasks)
-
+	taskGroup.Post("/", handler.CreateTask)
+	taskGroup.Delete("/:id", handler.DeleteTask)
 
 }
